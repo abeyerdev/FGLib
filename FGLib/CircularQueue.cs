@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace CircularQueue
+namespace FGLib.CircularQueue
 {
     /// <summary>
-    /// A circular queue to hold input information
-    /// for FGLib InputBuffer.
+    /// Represents a strongly typed queue of objects that is circular in nature
+    /// allowing the tail of the queue to eventually wrap back around to the head.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class CircularQueue<T> : IEnumerable<T>
     {
+        List<string> test = new List<string>();
         private T[] _queue;
         private int _head, _tail = 0;
         private int _size;
@@ -19,6 +19,16 @@ namespace CircularQueue
         public int Head { get { return _head; } }
         public int Tail { get { return _tail; } }
         public int Size { get { return _size; } }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)_queue).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<T>)_queue).GetEnumerator();
+        }
 
         public CircularQueue(int size)
         {
@@ -84,24 +94,18 @@ namespace CircularQueue
             _head = _tail;
         }
 
+        /// <summary>
+        /// Returns whether or not there are any items in the queue.
+        /// </summary>
+        /// <returns></returns>
         public bool IsEmpty()
         {
             return _head == _tail;
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return ((IEnumerable<T>)_queue).GetEnumerator();
-        }
-
         private bool isIndexClear(int index)
         {
             return _queue[index] == null || _queue[index].Equals(default(T));
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<T>)_queue).GetEnumerator();
         }
     }
 }
