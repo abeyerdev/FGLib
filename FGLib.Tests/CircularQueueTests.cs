@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FGLib.CircularQueue;
 
@@ -78,21 +78,23 @@ namespace FGLib.Tests.CircularQueue
             queue.Add("Fourth");
             queue.Add("Fifth");
             queue.Remove();
+            queue.Remove();
+            queue.Remove();
 
             Assert.IsTrue(queue[0] == null);
-            Assert.IsTrue(queue[1] == "Second");
-            Assert.IsTrue(queue[2] == "Third");
+            Assert.IsTrue(queue[1] == null);
+            Assert.IsTrue(queue[2] == null);
             Assert.IsTrue(queue[3] == "Fourth");
             Assert.IsTrue(queue[4] == "Fifth");
 
-            Assert.IsTrue(queue.Head == 1);
+            Assert.IsTrue(queue.Head == 3);
             Assert.IsTrue(queue.Tail == 4);
         }
 
         [TestMethod]
         public void CanClear_Test()
         {
-            CircularQueue<int> queue = new CircularQueue<int>(3) { 0, 222, 2321 };
+            CircularQueue<int> queue = new CircularQueue<int>(55) { 0, 222, 2321 };
             queue.Clear();
 
             Assert.IsTrue(queue.IsEmpty());
