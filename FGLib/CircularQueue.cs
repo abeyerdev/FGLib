@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -38,7 +38,7 @@ namespace FGLib.CircularQueue
             }
 
             _size = size;
-            _queue = new T[_size];
+            _queue = new T[_size];           
         }
 
         public T this[int i]
@@ -86,12 +86,12 @@ namespace FGLib.CircularQueue
         /// </summary>
         public void Clear()
         {
-            for (int i = 0; i < _size; i++)
+            while(!IsEmpty())
             {
-                _queue[i] = default(T);
+                Remove();
             }
 
-            _head = _tail;
+            _queue[_head] = default(T);
         }
 
         /// <summary>
