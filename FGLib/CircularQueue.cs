@@ -6,16 +6,36 @@ namespace FGLib
 {
     /// <summary>
     /// Represents a strongly typed queue of objects that is circular in nature
-    /// allowing the tail of the queue to eventually wrap back around to the head.
+    /// allowing the tail of the queue to eventually wrap back around to the head 
+    /// and allow endless additions to the queue.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class CircularQueue<T> : IEnumerable<T>
     {
-        List<string> test = new List<string>();
         private T[] _queue;
         private int _head, _tail = 0;
         private int _size;
 
+        public int Count {
+            get
+            {
+                if (IsEmpty())
+                {
+                    return 0;
+                }                    
+                else
+                {
+                    int count = 1;
+
+                    for (int i = _head; i != _tail; i = GetNextIndex(i))
+                    {
+                        count++;
+                    }
+
+                    return count;
+                }                
+            }
+        }
         public int Head { get { return _head; } }
         public int Tail { get { return _tail; } }
         public int Size { get { return _size; } }
@@ -58,13 +78,13 @@ namespace FGLib
             }
             else
             {
-                _tail = (_tail + 1) % _size;
+                _tail = GetNextIndex(_tail);
                 _queue[_tail] = element;
 
                 // handle case when tail becomes head
                 if (_head == _tail)
                 {
-                    _head = (_head + 1) % _size;
+                    _head = GetNextIndex(_head);
                 }
             }
         }
@@ -77,7 +97,7 @@ namespace FGLib
             if (!IsEmpty())
             {
                 _queue[_head] = default(T);
-                _head = (_head + 1) % _size;
+                _head = GetNextIndex(_head);
             }
         }
 
@@ -101,6 +121,11 @@ namespace FGLib
         public bool IsEmpty()
         {
             return _head == _tail;
+        }
+
+        public int GetNextIndex(int index)
+        {
+            return (index + 1) % _size;
         }
 
         private bool isIndexClear(int index)

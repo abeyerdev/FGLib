@@ -10,8 +10,13 @@ namespace FGLib.Tests
         [TestMethod]
         public void CanCreateMove_Test()
         {
-            List<string> commandList = new List<string>() { "d", "df", "f" };
-            Move fireball = new Move("Hadouken", new CommandSequence(commandList));
+            List<ConsoleKey> commandList = new List<ConsoleKey>()
+            {
+                ConsoleKey.DownArrow,
+                ConsoleKey.RightArrow,
+                ConsoleKey.P
+            };
+            Move fireball = new Move(new CommandSequence<ConsoleKey>(commandList), "Hadouken");
 
             Assert.IsInstanceOfType(fireball, typeof(Move));
             Assert.AreEqual(fireball.Name, "Hadouken");

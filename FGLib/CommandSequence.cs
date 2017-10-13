@@ -1,18 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FGLib
 {
-    public class CommandSequence
+    public class CommandSequence<T>
     {
-        // using strings to represent input at the moment...
-        private string _activatesOn;
-        private List<string> _commands;
+        public T ActivatesOn { get; }
+        public List<T> Commands;
 
-        public CommandSequence(List<string> orderedCommands)
-        {
-            _commands = orderedCommands;
-            _activatesOn = _commands.Last();
-        }
+        public CommandSequence(List<T> orderedCommands)
+        {            
+            ActivatesOn = orderedCommands.Last();
+            orderedCommands.Remove(ActivatesOn);
+            Commands = orderedCommands;
+        }        
     }
 }
