@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace FGLib.CircularQueue
+namespace FGLib
 {
     /// <summary>
     /// Represents a strongly typed queue of objects that is circular in nature

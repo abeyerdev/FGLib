@@ -1,8 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FGLib.CircularQueue;
 
-namespace FGLib.Tests.CircularQueue
+namespace FGLib.Tests
 {
     [TestClass]
     public class CircularQueueTests

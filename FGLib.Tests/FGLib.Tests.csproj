@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FGLib">
+      <HintPath>..\FGLib\bin\Debug\FGLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -51,13 +54,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CircularQueueTests.cs" />
+    <Compile Include="MoveTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FGLib\FGLib.csproj">
-      <Project>{0313d230-e5cf-4c93-8d44-b2129620e539}</Project>
-      <Name>FGLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

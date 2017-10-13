@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGLib", "FGLib\FGLib.csproj", "{0313D230-E5CF-4C93-8D44-B2129620E539}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGLib.Tests", "FGLib.Tests\FGLib.Tests.csproj", "{429A6F3A-FB26-4C4F-A956-F089E226915F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0313D230-E5CF-4C93-8D44-B2129620E539} = {0313D230-E5CF-4C93-8D44-B2129620E539}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
