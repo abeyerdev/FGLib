@@ -21,7 +21,7 @@ namespace FGLib.ConsoleDriver
 
                 if(executedMove != null)
                 {
-                    Console.WriteLine(string.Format("{0}{1} executed! Input buffer cleared.", Environment.NewLine, executedMove.Name));
+                    Console.WriteLine(string.Format("{0}{1} executed!", Environment.NewLine, executedMove.Name));
                 }
 
                 keyPressed = Console.ReadKey().Key;
