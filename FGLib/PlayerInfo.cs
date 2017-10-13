@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace FGLib
 {
@@ -13,7 +9,8 @@ namespace FGLib
 
         public PlayerInfo(int playerNumber, Character character)
         {
-
+            PlayerNumber = playerNumber;
+            Character = character;
         }
     }
 }

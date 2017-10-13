@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FGLib
 {
     public class Character
     {
+        public string Name { get; }
+        public List<Move> MoveList { get; }
+
+        public Character(string name, List<Move> moveList)
+        {
+            Name = name;
+            MoveList = moveList;
+        }
     }
 }

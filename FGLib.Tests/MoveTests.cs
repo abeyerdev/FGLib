@@ -12,7 +12,9 @@ namespace FGLib.Tests
         {
             List<string> commandList = new List<string>() { "d", "df", "f" };
             Move fireball = new Move("Hadouken", new CommandSequence(commandList));
+
             Assert.IsInstanceOfType(fireball, typeof(Move));
+            Assert.AreEqual(fireball.Name, "Hadouken");
         }
     }
 }
