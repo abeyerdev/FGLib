@@ -12,7 +12,9 @@ namespace FGLib
     {
         private const int DEFAULT_BUFFER_SIZE = 60;
         private CircularQueue<ConsoleKey> buffer;
+
         public PlayerInfo Player { get; }
+        public int Size { get { return buffer.Size; } }
 
         public InputBuffer(PlayerInfo player, int bufferSize = DEFAULT_BUFFER_SIZE)
         {
@@ -24,7 +26,7 @@ namespace FGLib
         {
             buffer.Add(input);            
             return matchInputsToMoveList(input);
-        }
+        }      
 
         /**
         * Every frame, after adding in the most recent input (and hence removing the last one, 

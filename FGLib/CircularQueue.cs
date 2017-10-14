@@ -54,7 +54,7 @@ namespace FGLib
         /// Number of total objects that can be stored in the queue.
         /// </summary>
         public int Size { get { return size; } }
-
+        
         /// <summary>
         /// Constructs a new queue with the given size. Size must be greater than or equal to 2 
         /// as a lower size would not allow basic functionality that relies on head and tail
