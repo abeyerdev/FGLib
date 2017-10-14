@@ -12,10 +12,13 @@ namespace FGLib
     /// <typeparam name="T"></typeparam>
     public class CircularQueue<T> : IEnumerable<T>
     {
-        private T[] _queue;
-        private int _head, _tail = 0;
-        private int _size;
+        private T[] queue;
+        private int head, tail = 0;
+        private int size;
 
+        /// <summary>
+        /// Number of objects occupying space in the queue.
+        /// </summary>
         public int Count {
             get
             {
@@ -27,7 +30,7 @@ namespace FGLib
                 {
                     int count = 1;
 
-                    for (int i = _head; i != _tail; i = GetNextIndex(i))
+                    for (int i = head; i != tail; i = GetNextIndex(i))
                     {
                         count++;
                     }
@@ -36,20 +39,28 @@ namespace FGLib
                 }                
             }
         }
-        public int Head { get { return _head; } }
-        public int Tail { get { return _tail; } }
-        public int Size { get { return _size; } }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return ((IEnumerable<T>)_queue).GetEnumerator();
-        }
+        /// <summary>
+        /// Current index of first object in the queue.
+        /// </summary>
+        public int Head { get { return head; } }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<T>)_queue).GetEnumerator();
-        }
+        /// <summary>
+        /// Current index of last object in the queue.
+        /// </summary>
+        public int Tail { get { return tail; } }
 
+        /// <summary>
+        /// Number of total objects that can be stored in the queue.
+        /// </summary>
+        public int Size { get { return size; } }
+
+        /// <summary>
+        /// Constructs a new queue with the given size. Size must be greater than or equal to 2 
+        /// as a lower size would not allow basic functionality that relies on head and tail
+        /// values differing.
+        /// </summary>
+        /// <param name="size"></param>
         public CircularQueue(int size)
         {
             if (size < 2)
@@ -57,13 +68,28 @@ namespace FGLib
                 throw new ArgumentOutOfRangeException("Need to provide a size of at least 2 for a CircularQueue.");
             }
 
-            _size = size;
-            _queue = new T[_size];           
+            this.size = size;
+            queue = new T[this.size];           
         }
 
+        /// <summary>
+        /// Indexer for accessing queue values using bracket notation.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public T this[int i]
         {
-            get { return _queue[i]; }
+            get { return queue[i]; }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)queue).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<T>)queue).GetEnumerator();
         }
 
         /// <summary>
@@ -72,19 +98,19 @@ namespace FGLib
         /// <param name="element"></param>
         public void Add(T element)
         {
-            if (isIndexClear(_head))
+            if (isIndexClear(head))
             {
-                _queue[_head] = element;
+                queue[head] = element;
             }
             else
             {
-                _tail = GetNextIndex(_tail);
-                _queue[_tail] = element;
+                tail = GetNextIndex(tail);
+                queue[tail] = element;
 
                 // handle case when tail becomes head
-                if (_head == _tail)
+                if (head == tail)
                 {
-                    _head = GetNextIndex(_head);
+                    head = GetNextIndex(head);
                 }
             }
         }
@@ -96,8 +122,8 @@ namespace FGLib
         {
             if (!IsEmpty())
             {
-                _queue[_head] = default(T);
-                _head = GetNextIndex(_head);
+                queue[head] = default(T);
+                head = GetNextIndex(head);
             }
         }
 
@@ -111,7 +137,7 @@ namespace FGLib
                 Remove();
             }
 
-            _queue[_head] = default(T);
+            queue[head] = default(T);
         }
 
         /// <summary>
@@ -120,17 +146,22 @@ namespace FGLib
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return _head == _tail;
+            return head == tail;
         }
 
+        /// <summary>
+        /// Returns the next index in the queue, travelling towards the tail.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public int GetNextIndex(int index)
         {
-            return (index + 1) % _size;
+            return (index + 1) % size;
         }
 
         private bool isIndexClear(int index)
         {
-            return _queue[index] == null || _queue[index].Equals(default(T));
+            return queue[index] == null || queue[index].Equals(default(T));
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
+using FGLib;
 using FGLib.CharacterData;
 
-namespace FGLib.ConsoleDriver
+namespace FGLibDriver
 {
     class Program
     {

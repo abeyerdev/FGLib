@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FGLib">
-      <HintPath>..\FGLib\bin\Debug\FGLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FGLib\FGLib.csproj">
+      <Project>{0313d230-e5cf-4c93-8d44-b2129620e539}</Project>
+      <Name>FGLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
