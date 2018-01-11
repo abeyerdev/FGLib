@@ -12,14 +12,14 @@ namespace FGLib.CharacterData
         {
             List<Move> moveList = new List<Move>();
 
-            List<ConsoleKey> fireballCommandList = new List<ConsoleKey>()
-            {
-                ConsoleKey.DownArrow,
-                ConsoleKey.RightArrow,
-                ConsoleKey.P
-            };
-            Move fireball = new Move(new CommandSequence<ConsoleKey>(fireballCommandList), "Hadouken", 5, true);
-            moveList.Add(fireball);
+            //List<ConsoleKey> fireballCommandList = new List<ConsoleKey>()
+            //{
+            //    ConsoleKey.DownArrow,
+            //    ConsoleKey.RightArrow,
+            //    ConsoleKey.P
+            //};
+            //Move fireball = new Move(new CommandSequence<Input>(fireballCommandList), "Hadouken", 5, true);
+            //moveList.Add(fireball);
 
             return moveList;
         }

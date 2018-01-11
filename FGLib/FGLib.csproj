@@ -44,10 +44,19 @@
     <Compile Include="CharacterData\Ryu.cs" />
     <Compile Include="CircularQueue.cs" />
     <Compile Include="CommandSequence.cs" />
-    <Compile Include="InputBuffer.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="PlayerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InputHandling\InputManager.cs" />
+    <Compile Include="InputHandling\Input.cs" />
+    <Compile Include="InputHandling\InputBitFlagsEnum.cs" />
+    <Compile Include="InputHandling\ConsoleKeyInputMapper.cs" />
+    <Compile Include="InputHandling\InputMapperFactory.cs" />
+    <Compile Include="InputHandling\IInputMapper.cs" />
+    <Compile Include="InputHandling\InputBuffer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InputHandling\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

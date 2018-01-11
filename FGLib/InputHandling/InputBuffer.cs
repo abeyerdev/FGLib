@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FGLib
+namespace FGLib.InputHandling
 {
     /// <summary>
     /// Provides functionality for controlling the resolution
@@ -10,23 +10,27 @@ namespace FGLib
     /// </summary>
     public class InputBuffer
     {
-        private const int DEFAULT_BUFFER_SIZE = 60;
-        private CircularQueue<ConsoleKey> buffer;
+        const int DEFAULT_BUFFER_SIZE = 120;
+        readonly CircularQueue<Input> buffer;
 
         public PlayerInfo Player { get; }
         public int Size { get { return buffer.Size; } }
 
+        public InputBuffer() 
+        {
+            buffer = new CircularQueue<Input>(DEFAULT_BUFFER_SIZE);
+        }
+
         public InputBuffer(PlayerInfo player, int bufferSize = DEFAULT_BUFFER_SIZE)
         {
-            buffer = new CircularQueue<ConsoleKey>(bufferSize);
+            buffer = new CircularQueue<Input>(bufferSize);
             Player = player;
         }
 
-        public Move AddAndResolveInput(ConsoleKey input)
+        public void AddInput(Input input)
         {
-            buffer.Add(input);            
-            return matchInputsToMoveList(input);
-        }      
+            buffer.Add(input);
+        }
 
         /**
         * Every frame, after adding in the most recent input (and hence removing the last one, 
@@ -43,7 +47,12 @@ namespace FGLib
         *  then flush the buffer if this move type is set to flush the buffer (generally, special moves and above (supers etc) 
         *  will flush it, while command (forward+punch), normals (punch) and movement (forward) will not).
         * **/
-        private Move matchInputsToMoveList(ConsoleKey input)
+        public Move ResolveInput()
+        {
+            return null;
+        }
+
+        Move matchInputsToMoveList(Input input)
         {
             Move resultingMove = null;
             List<Move> possibleMoves = Player.Character.MoveList
@@ -71,12 +80,12 @@ namespace FGLib
             return resultingMove;
         }
 
-        private bool isMoveInBuffer(Move move)
+        bool isMoveInBuffer(Move move)
         {
             int startingIndex = buffer.Head;
             bool keepSearching = false;
 
-            foreach(ConsoleKey key in move.Command.Commands)
+            foreach(Input key in move.Command.Commands)
             {
                 keepSearching = false;
                 for (int i = startingIndex; i != buffer.Tail; i = buffer.GetNextIndex(i))
