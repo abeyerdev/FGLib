@@ -44,6 +44,7 @@
     <Compile Include="CharacterData\Ryu.cs" />
     <Compile Include="CircularQueue.cs" />
     <Compile Include="CommandSequence.cs" />
+    <Compile Include="InputHandling\InputEnum.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="PlayerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,9 +56,7 @@
     <Compile Include="InputHandling\IInputMapper.cs" />
     <Compile Include="InputHandling\InputBuffer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InputHandling\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

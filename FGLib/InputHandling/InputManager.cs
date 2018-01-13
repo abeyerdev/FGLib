@@ -14,12 +14,19 @@ namespace FGLib.InputHandling
             mapper = InputMapperFactory.CreateInputMapper<T>();
         }
 
+        // Map input on each raw input value and store as an integer 
+        // for the frame. Then store total frame input in the buffer.
         public void ReceiveInputsForFrame(List<T> rawInputs)
         {
-            // Will utilize mapper.MapInput() on each input value
-            // and store as an integer for the frame. This will then need to
-            // go into the buffer.
+            List<int> frameInput = new List<int>();
+                        
+            foreach(T rawInput in rawInputs)
+            {
+                frameInput.Add(mapper.MapInput(rawInput));
+            }
 
+            Input finalInput = Input.ParseBits(frameInput);
+            buffer.AddInput(finalInput);
         }
     }
 }

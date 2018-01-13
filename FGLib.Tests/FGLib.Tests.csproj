@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CircularQueueTests.cs" />
     <Compile Include="InputBufferTests.cs" />
+    <Compile Include="InputManagerTests.cs" />
     <Compile Include="MoveTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
