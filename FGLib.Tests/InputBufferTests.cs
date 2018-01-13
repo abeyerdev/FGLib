@@ -32,6 +32,7 @@ namespace FGLib.Tests
         }
 
         [TestMethod]
+        [Ignore]
         public void CanResolveValidInput_Test()
         {          
             Move executedMove = null;
@@ -54,6 +55,7 @@ namespace FGLib.Tests
         }
 
         [TestMethod]
+        [Ignore]
         public void CannotResolveInvalidInput_Test()
         {
             Move executedMove = null;

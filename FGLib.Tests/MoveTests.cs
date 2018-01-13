@@ -9,6 +9,7 @@ namespace FGLib.Tests
     public class MoveTests
     {
         [TestMethod]
+        [Ignore]
         public void CanCreateMove_Test()
         {
             List<Input> commandList = new List<Input>()
