@@ -13,12 +13,14 @@ namespace FGLib.Tests
         {
             InputManager<ConsoleKey> cKeyManager = new InputManager<ConsoleKey>();
             Assert.IsInstanceOfType(cKeyManager, typeof(InputManager<ConsoleKey>));
+            Assert.IsInstanceOfType(cKeyManager.buffer, typeof(InputBuffer));
         }
 
         [TestMethod]
         public void thing_test()
         {
             InputManager<ConsoleKey> cKeyManager = new InputManager<ConsoleKey>();
+
             List<ConsoleKey> rawInputs = new List<ConsoleKey>()
             {
                 ConsoleKey.LeftArrow,
@@ -28,7 +30,7 @@ namespace FGLib.Tests
                 ConsoleKey.NumPad6,
                 ConsoleKey.NumPad3
             };
-
+            
             cKeyManager.ReceiveInputsForFrame(rawInputs);
         }
     }

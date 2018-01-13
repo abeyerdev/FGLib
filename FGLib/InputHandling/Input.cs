@@ -24,6 +24,11 @@ namespace FGLib.InputHandling
             AssignInputs(frameInputs);            
         }
 
+        public bool HasInput(InputEnum input)
+        {
+            return inputs.Contains(input);
+        }
+
         public override string ToString()
         {
             string result = "";
