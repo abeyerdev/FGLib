@@ -36,7 +36,6 @@ namespace FGLib.InputHandling
 
         private void AssignInputs(int frameInputs)
         {
-            string value = Convert.ToString(frameInputs, 2);
             if ((frameInputs & 1 << (int)InputBitFlagsEnum.Neutral) == 1 << (int)InputBitFlagsEnum.Neutral)
                 inputs.Add(InputEnum.Neutral);
             if ((frameInputs & 1 << (int)InputBitFlagsEnum.Down) == 1 << (int)InputBitFlagsEnum.Down)
