@@ -23,7 +23,7 @@ namespace FGLib.InputHandling
         {
             List<int> frameInput = new List<int>();
             rawInputs.ForEach(rawInput => frameInput.Add(mapper.MapInput(rawInput)));
-            var thing = frameInput;
+            Input finalInput = Input.ParseBits(frameInput);
             buffer.AddInput(finalInput);
         }
     }
