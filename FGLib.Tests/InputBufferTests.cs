@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FGLib.CharacterData;
+using FGLib.InputHandling;
 
 namespace FGLib.Tests
 {
@@ -45,7 +46,7 @@ namespace FGLib.Tests
 
             foreach(ConsoleKey key in inputs)
             {
-                executedMove = buffer.AddAndResolveInput(key);
+                // executedMove = buffer.AddInput(key);
             }
 
             Assert.IsNotNull(executedMove);
@@ -67,7 +68,7 @@ namespace FGLib.Tests
 
             foreach (ConsoleKey key in inputs)
             {
-                executedMove = buffer.AddAndResolveInput(key);
+                // executedMove = buffer.AddInput(key);
             }
 
             Assert.IsNull(executedMove);

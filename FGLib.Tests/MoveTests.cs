@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FGLib.InputHandling;
 
 namespace FGLib.Tests
 {
@@ -10,13 +11,10 @@ namespace FGLib.Tests
         [TestMethod]
         public void CanCreateMove_Test()
         {
-            List<ConsoleKey> commandList = new List<ConsoleKey>()
+            List<Input> commandList = new List<Input>()
             {
-                ConsoleKey.DownArrow,
-                ConsoleKey.RightArrow,
-                ConsoleKey.P
             };
-            Move fireball = new Move(new CommandSequence<ConsoleKey>(commandList), "Hadouken");
+            Move fireball = new Move(new CommandSequence(commandList), "Hadouken");
 
             Assert.IsInstanceOfType(fireball, typeof(Move));
             Assert.AreEqual(fireball.Name, "Hadouken");
