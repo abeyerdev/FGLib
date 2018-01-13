@@ -16,7 +16,7 @@ namespace FGLib.Tests
         }
 
         [TestMethod]
-        public void thing_test()
+        public void CanReceiveInputs_Test()
         {
             InputManager<ConsoleKey> cKeyManager = new InputManager<ConsoleKey>();
 
