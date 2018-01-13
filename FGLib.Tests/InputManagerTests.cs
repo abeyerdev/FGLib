@@ -13,7 +13,6 @@ namespace FGLib.Tests
         {
             InputManager<ConsoleKey> cKeyManager = new InputManager<ConsoleKey>();
             Assert.IsInstanceOfType(cKeyManager, typeof(InputManager<ConsoleKey>));
-            Assert.IsInstanceOfType(cKeyManager.buffer, typeof(InputBuffer));
         }
 
         [TestMethod]

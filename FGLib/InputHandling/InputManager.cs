@@ -22,13 +22,8 @@ namespace FGLib.InputHandling
         public void ReceiveInputsForFrame(List<T> rawInputs)
         {
             List<int> frameInput = new List<int>();
-                        
-            foreach(T rawInput in rawInputs)
-            {
-                frameInput.Add(mapper.MapInput(rawInput));
-            }
-
-            Input finalInput = Input.ParseBits(frameInput);
+            rawInputs.ForEach(rawInput => frameInput.Add(mapper.MapInput(rawInput)));
+            var thing = frameInput;
             buffer.AddInput(finalInput);
         }
     }
